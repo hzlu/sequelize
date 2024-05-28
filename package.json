@@ -1,7 +1,7 @@
 {
-  "name": "sequelize",
-  "description": "Sequelize is a promise-based Node.js ORM tool for Postgres, MySQL, MariaDB, SQLite, Microsoft SQL Server, Amazon Redshift and Snowflake’s Data Cloud. It features solid transaction support, relations, eager and lazy loading, read replication and more.",
-  "version": "0.0.0-development",
+  "name": "@hscloud/sequelize-dmdb",
+  "description": "Sequelize is a promise-based Node.js ORM tool for Postgres, MySQL, MariaDB, SQLite, Microsoft SQL Server, Dameng, Amazon Redshift and Snowflake’s Data Cloud. It features solid transaction support, relations, eager and lazy loading, read replication and more.",
+  "version": "6.37.3",
   "funding": [
     {
       "type": "opencollective",
@@ -39,7 +39,7 @@
     }
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=16.0.0"
   },
   "files": [
     "lib",
@@ -51,6 +51,7 @@
     "@types/debug": "^4.1.8",
     "@types/validator": "^13.7.17",
     "debug": "^4.3.4",
+    "dmdb": "^1.0.24984",
     "dottie": "^2.0.6",
     "inflection": "^1.13.4",
     "lodash": "^4.17.21",
@@ -154,6 +155,9 @@
     },
     "oracledb": {
       "optional": true
+    },
+    "dmdb": {
+      "optional": true
     }
   },
   "keywords": [
@@ -170,6 +174,7 @@
     "oracledb",
     "sqlserver",
     "snowflake",
+    "dmdb",
     "orm",
     "nodejs",
     "object relational mapper",

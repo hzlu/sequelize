@@ -361,8 +361,11 @@ class Sequelize {
       case 'snowflake':
         Dialect = require('./dialects/snowflake');
         break;
+      case 'dmdb':
+        Dialect = require('./dialects/dmdb');
+        break;
       default:
-        throw new Error(`The dialect ${this.getDialect()} is not supported. Supported dialects: mssql, mariadb, mysql, oracle, postgres, db2 and sqlite.`);
+        throw new Error(`The dialect ${this.getDialect()} is not supported. Supported dialects: mssql, mariadb, mysql, oracle, postgres, db2, snowflake, dmdb and sqlite.`);
     }
 
     this.dialect = new Dialect(this);
