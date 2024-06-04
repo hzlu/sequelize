@@ -397,6 +397,8 @@ class DMDBQueryGenerator extends AbstractQueryGenerator {
 
     if (attribute.allowNull === false) {
       template += ' NOT NULL';
+    } else if (attribute.allowNull === true) {
+      template += ' NULL';
     }
 
     if (attribute.autoIncrement) {

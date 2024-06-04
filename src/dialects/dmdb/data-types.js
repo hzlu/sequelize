@@ -142,7 +142,15 @@ module.exports = BaseTypes => {
     toSql() {
       return 'VARCHAR(32767)';
     }
+    _sanitize(value) {
+      if (typeof value === 'string') {
+        return JSON.parse(value);
+      }
+      return value;
+    }
   }
+
+  JSONTYPE.parse = JSONTYPE.prototype._sanitize;
 
   class BOOLEAN extends BaseTypes.BOOLEAN {
     toSql() {
