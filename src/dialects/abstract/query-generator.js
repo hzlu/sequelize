@@ -1207,6 +1207,7 @@ class QueryGenerator {
       case 'mysql':
       case 'mariadb':
       case 'sqlite':
+      case 'dmdb':
         /**
          * Non digit sub paths need to be quoted as ECMAScript identifiers
          * https://bugs.mysql.com/bug.php?id=81896
