@@ -2542,6 +2542,10 @@ https://github.com/sequelize/sequelize/discussions/15694`);
     }
 
     const opValue = options.bindParam ? this.format(value, field, options, options.bindParam) : this.escape(value, field);
+
+    if (field?.type?.options?.binary) {
+      return `BINARY ${this._joinKeyValue(key, opValue, this.OperatorMap[Op.eq], options.prefix)}`;
+    }
     return this._joinKeyValue(key, opValue, this.OperatorMap[Op.eq], options.prefix);
   }
 

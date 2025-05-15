@@ -140,7 +140,7 @@ module.exports = BaseTypes => {
       return options.operation === 'where' && typeof value === 'string' ? value : JSON.stringify(value);
     }
     toSql() {
-      return 'VARCHAR(32767)';
+      return 'TEXT';
     }
     _sanitize(value) {
       if (typeof value === 'string') {
@@ -161,15 +161,9 @@ module.exports = BaseTypes => {
   class STRING extends BaseTypes.STRING {
     toSql() {
       if (this._binary) {
-        return `VARBINARY(${this._length || 255})`;
+        return `VARCHAR(${this._length || 255})`;
       }
       return `VARCHAR(${this._length || 255})`;
-    }
-    _stringify(value, options) {
-      if (this._binary) {
-        return Buffer.from(value).toString('hex');
-      }
-      return value;
     }
   }
 
