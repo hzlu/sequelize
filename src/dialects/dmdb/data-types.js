@@ -161,9 +161,21 @@ module.exports = BaseTypes => {
   class STRING extends BaseTypes.STRING {
     toSql() {
       if (this._binary) {
-        return `VARCHAR(${this._length || 255})`;
+        return `VARBINARY(${this._length || 255})`;
       }
       return `VARCHAR(${this._length || 255})`;
+    }
+    _sanitize(value) {
+      if (this._binary) {
+        return Buffer.from(value, 'hex').toString();
+      }
+      return value;
+    }
+    _stringify(value) {
+      if (this._binary) {
+        return Buffer.from(value).toString('hex');
+      }
+      return value;
     }
   }
 
