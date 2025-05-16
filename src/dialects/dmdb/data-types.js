@@ -166,8 +166,8 @@ module.exports = BaseTypes => {
       return `VARCHAR(${this._length || 255})`;
     }
     _sanitize(value) {
-      if (this._binary) {
-        return Buffer.from(value, 'hex').toString();
+      if (value instanceof Buffer) {
+        return value.toString();
       }
       return value;
     }
