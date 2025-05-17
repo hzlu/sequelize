@@ -956,6 +956,11 @@ class DMDBQueryGenerator extends AbstractQueryGenerator {
 
     const whereOptions = { ...options, bindParam };
 
+    if (!whereOptions.field && _.isPlainObject(where) && Object.keys(where).length === 1) {
+      const key = Object.keys(where)[0];
+      whereOptions.field = modelAttributeMap[key];
+    }
+
     if (values.length === 0) {
       return '';
     }

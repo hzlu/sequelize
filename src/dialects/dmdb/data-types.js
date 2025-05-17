@@ -177,6 +177,9 @@ module.exports = BaseTypes => {
       }
       return value;
     }
+    _bindParam(value, options) {
+      return options.bindParam(this._binary ? Buffer.from(value).toString('hex') : value);
+    }
   }
 
   return {
