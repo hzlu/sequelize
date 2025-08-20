@@ -339,8 +339,9 @@ class DMDBQueryGenerator extends AbstractQueryGenerator {
     let limit = '';
     let query = `DELETE FROM ${this.quoteTable(tableName)}`;
 
+    const offset = options.offset || 0;
     if (options.limit) {
-      limit = ` LIMIT ${this.escape(options.limit)}`;
+      limit += ` LIMIT ${offset}, ${ this.escape(options.limit) }`;
     }
 
     where = this.getWhereConditions(where, null, model, options);
@@ -1362,6 +1363,17 @@ class DMDBQueryGenerator extends AbstractQueryGenerator {
       condition: joinCondition,
       attributes
     };
+  }
+
+  addLimitAndOffset(options) {
+    const offset = options.offset || 0;
+    let fragment = '';
+
+    if (options.limit) {
+      fragment += ` LIMIT ${offset}, ${ this.escape(options.limit) }`;
+    }
+
+    return fragment;
   }
 }
 

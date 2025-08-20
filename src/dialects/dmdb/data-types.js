@@ -94,7 +94,7 @@ module.exports = BaseTypes => {
 
   class UUID extends BaseTypes.UUID {
     toSql() {
-      return 'CHAR(36) BINARY';
+      return 'VARCHAR2(36)';
     }
   }
 
@@ -143,10 +143,11 @@ module.exports = BaseTypes => {
       return 'TEXT';
     }
     _sanitize(value) {
-      if (typeof value === 'string') {
+      try {
         return JSON.parse(value);
+      } catch (err) {
+        return value;
       }
-      return value;
     }
   }
 
